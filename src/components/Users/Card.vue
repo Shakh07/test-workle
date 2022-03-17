@@ -3,29 +3,25 @@
     <div class="flex items-center ml-2.5 mt-2.5 mb-2.5 gap-x-2.5">
       <div>
         <img
-          :src="user.profile_image['medium']"
+          :src="image.user.profile_image['medium']"
           alt="userIcon"
           class="block rounded-full w-8 h-8"
         />
       </div>
       <div class="text-xs">
-        <p class="font-bold">{{ user.name }}</p>
+        <p class="font-bold">{{ image.user["name"] }}</p>
         <p class="font-extralight text-gray-400">
-          @{{ user.social["instagram_username"] }}
+          @{{ image.user.social["instagram_username"] }}
         </p>
       </div>
     </div>
     <div>
-      <img
-        :src="userPhoto[0].urls['small']"
-        alt="userPictures"
-        class="user-picture"
-      />
+      <img :src="image.urls['small']" alt="userPictures" class="user-picture" />
     </div>
     <div class="flex items-center justify-end gap-x-1.5 mt-3">
       <div class="text-gray-400 text-xs font-bold">{{ photoViews }}</div>
       <div class="mr-2.5">
-        <img src="@/assets/icon/eye.png" alt="eye" class="w-5 h-5" />
+        <eye-icon />
       </div>
     </div>
   </div>
@@ -33,18 +29,19 @@
 
 <script>
 import axios from "axios";
+import EyeIcon from "./icons/EyeIcon.vue";
 const API_KEY = "k6unMgPsTj1viPCTeUZgwAC0KTilbQk2ytB-wLcV_dU";
 export default {
+  components: { EyeIcon },
   props: {
-    user: {
+    image: {
       type: Object,
       required: true,
     },
   },
   data() {
     return {
-      userPhoto: this.user.photos,
-      photoId: this.user.photos[0].id,
+      photoId: this.image.id,
       photoViews: 0,
     };
   },

@@ -1,6 +1,13 @@
 <template>
   <div id="app">
-    <Card v-for="user in usersDataset" :key="user.id" :user="user" />
+    <div class="mb-20">
+      <Card v-for="image in imagesDataset" :key="image.id" :image="image" />
+    </div>
+    <div
+      class="bg-black text-white h-16 flex items-center justify-center opacity-90 fixed left-0 right-0 bottom-0"
+    >
+      <button class="block">1</button>
+    </div>
   </div>
 </template>
 
@@ -10,44 +17,28 @@ import Card from "./components/Users/Card.vue";
 const API_KEY = "k6unMgPsTj1viPCTeUZgwAC0KTilbQk2ytB-wLcV_dU";
 export default {
   name: "App",
+  components: { Card },
   data() {
     return {
-      users: [
-        "borkography",
-        "hybridstorytellers",
-        "edwardhowellphotography",
-        "nicsandman20",
-        "thephotographermom",
-        "jamie452",
-        "jazminantoinette",
-        "dreamcatchlight",
-        "girlwithredhat",
-        "alexandermils",
-      ],
-      usersDataset: [],
+      imagesDataset: [],
     };
   },
   mounted() {
-    this.getUsers();
+    this.getUserDataset();
   },
   methods: {
-    async getUserDataset(user) {
+    async getUserDataset() {
       try {
         const res = await axios.get(
-          `https://api.unsplash.com/users/${user}/?client_id=${API_KEY}`
+          `https://api.unsplash.com/photos?client_id=${API_KEY}`
         );
-        this.usersDataset.push(res.data);
+        this.imagesDataset = res.data;
+        console.log(this.imagesDataset);
       } catch (error) {
         console.log(error);
       }
     },
-    getUsers() {
-      this.users.forEach((element) => {
-        this.getUserDataset(element);
-      });
-    },
   },
-  components: { Card },
 };
 </script>
 
