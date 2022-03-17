@@ -1,7 +1,7 @@
 <template>
   <div class="flex justify-center">
     <div
-      class="mb-20 md:flex md:flex-wrap md:justify-center md:gap-x-5 lg:w-10/12"
+      class="mb-20 md:flex md:flex-wrap md:justify-center md:gap-x-5 card-wrapper"
     >
       <Card v-for="image in imagesDataset" :key="image.id" :image="image" />
     </div>
@@ -22,15 +22,15 @@ export default {
     };
   },
   mounted() {
-    this.getUserDataset(this.currentPage);
+    this.getPhotosDataset(this.currentPage);
   },
   watch: {
     currentPage(newValue) {
-      this.getUserDataset(newValue);
+      this.getPhotosDataset(newValue);
     },
   },
   methods: {
-    async getUserDataset(page) {
+    async getPhotosDataset(page) {
       try {
         const res = await axios.get(
           `https://api.unsplash.com/photos?page=${page}&client_id=${API_KEY}`
@@ -47,4 +47,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+@media screen and (min-width: 1000px) and (max-width: 2000px) {
+  .card-wrapper {
+    width: 800px;
+  }
+}
+</style>

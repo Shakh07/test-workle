@@ -1,26 +1,24 @@
 <template>
   <div class="wrapper">
-    <div
+    <router-link
+      :to="{ name: 'user', params: { id: image.user['username'] } }"
+      target="_blank"
       class="flex items-center ml-2.5 mt-2.5 mb-2.5 gap-x-2.5 xs:ml-0 md:ml-2.5"
     >
-      <router-link
-        :to="{ name: 'user', params: { id: image.user['username'] } }"
-      >
-        <div>
-          <img
-            :src="image.user.profile_image['medium']"
-            alt="userIcon"
-            class="block rounded-full w-8 h-8"
-          />
-        </div>
-        <div class="text-xs">
-          <p class="font-bold">{{ image.user["name"] }}</p>
-          <p class="font-extralight text-gray-400">
-            @{{ image.user.social["instagram_username"] }}
-          </p>
-        </div>
-      </router-link>
-    </div>
+      <div>
+        <img
+          :src="image.user.profile_image['medium']"
+          alt="userIcon"
+          class="block rounded-full w-8 h-8"
+        />
+      </div>
+      <div class="text-xs">
+        <p class="font-bold">{{ image.user["name"] }}</p>
+        <p class="font-extralight text-gray-400">
+          @{{ image.user.social["instagram_username"] }}
+        </p>
+      </div>
+    </router-link>
     <div class="flex justify-center">
       <img :src="image.urls['small']" alt="userPictures" class="user-picture" />
     </div>
@@ -72,6 +70,9 @@ export default {
 <style scoped>
 .wrapper {
   font-family: "Roboto Condensed", sans-serif;
+}
+.user-picture {
+  object-fit: cover;
 }
 @media screen and (min-width: 320px) {
   .user-picture {

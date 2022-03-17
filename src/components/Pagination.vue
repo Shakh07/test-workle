@@ -2,20 +2,26 @@
   <div
     class="bg-black text-white h-16 flex items-center justify-center opacity-90 fixed left-0 right-0 bottom-0 gap-x-3"
   >
-    <div class="flex gap-x-3 text-xs">
+    <div
+      class="flex gap-x-3 text-xs"
+      :class="{ 'next-pages': currentPage === firstPage }"
+    >
       <button @click="goToFirstpage">{{ firstPage }}</button>
       <p>...</p>
-      <button v-if="currentPage !== firstPage" @click="goToPrevPage">
+      <button @click="goToPrevPage">
         {{ currentPage - 1 }}
       </button>
     </div>
     <button>{{ currentPage }}</button>
-    <div class="flex gap-x-3 text-xs">
-      <button v-if="currentPage !== lastPage" @click="goToNextPage">
+    <div
+      class="flex gap-x-3 text-xs"
+      :class="{ 'next-pages': currentPage === lastPage }"
+    >
+      <button @click="goToNextPage">
         {{ currentPage + 1 }}
       </button>
       <p>...</p>
-      <p @click="goToLastpage">{{ lastPage }}</p>
+      <p @click="goToLastpage" class="cursor-pointer">{{ lastPage }}</p>
     </div>
   </div>
 </template>
@@ -54,4 +60,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.next-pages {
+  visibility: hidden;
+}
+</style>
