@@ -1,6 +1,8 @@
 <template>
-  <div id="app">
-    <div class="mb-20">
+  <div id="app" class="flex justify-center">
+    <div
+      class="mb-20 md:flex md:flex-wrap md:justify-center md:gap-x-5 lg:w-10/12"
+    >
       <Card v-for="image in imagesDataset" :key="image.id" :image="image" />
     </div>
     <pagination @page="getPage" />

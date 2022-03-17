@@ -1,6 +1,8 @@
 <template>
   <div class="wrapper">
-    <div class="flex items-center ml-2.5 mt-2.5 mb-2.5 gap-x-2.5 xs:ml-5">
+    <div
+      class="flex items-center ml-2.5 mt-2.5 mb-2.5 gap-x-2.5 xs:ml-0 md:ml-2.5"
+    >
       <div>
         <img
           :src="image.user.profile_image['medium']"
@@ -18,7 +20,7 @@
     <div class="flex justify-center">
       <img :src="image.urls['small']" alt="userPictures" class="user-picture" />
     </div>
-    <div class="flex items-center justify-end gap-x-1.5 mt-3">
+    <div class="flex items-center justify-end gap-x-1.5 mt-3 mb-2">
       <div class="text-gray-400 text-xs font-bold">{{ photoViews }}</div>
       <div class="mr-2.5">
         <eye-icon />
@@ -77,6 +79,12 @@ export default {
   .user-picture {
     width: 440px;
     height: 300px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .user-picture {
+    width: 320px;
+    height: 230px;
   }
 }
 </style>
