@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="flex items-center ml-2.5 mt-2.5 mb-2.5 gap-x-2.5">
+    <div class="flex items-center ml-2.5 mt-2.5 mb-2.5 gap-x-2.5 xs:ml-5">
       <div>
         <img
           :src="image.user.profile_image['medium']"
@@ -15,7 +15,7 @@
         </p>
       </div>
     </div>
-    <div>
+    <div class="flex justify-center">
       <img :src="image.urls['small']" alt="userPictures" class="user-picture" />
     </div>
     <div class="flex items-center justify-end gap-x-1.5 mt-3">
@@ -67,10 +67,16 @@ export default {
 .wrapper {
   font-family: "Roboto Condensed", sans-serif;
 }
-@media screen and (max-width: 320px) {
+@media screen and (min-width: 320px) {
   .user-picture {
     width: 320px;
     height: 230px;
+  }
+}
+@media screen and (min-width: 480px) {
+  .user-picture {
+    width: 440px;
+    height: 300px;
   }
 }
 </style>
