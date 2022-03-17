@@ -14,15 +14,15 @@ export default {
     return {
       users: [
         "borkography",
-        "slavewire",
         "hybridstorytellers",
         "edwardhowellphotography",
-        "glaubersampaio",
-        "mahdi_chf",
         "nicsandman20",
-        "lloydkearney",
         "thephotographermom",
         "jamie452",
+        "jazminantoinette",
+        "dreamcatchlight",
+        "girlwithredhat",
+        "alexandermils",
       ],
       usersDataset: [],
     };
